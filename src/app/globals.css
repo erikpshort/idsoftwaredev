@@ -1,27 +1,243 @@
 @import "tailwindcss";
 
+:root {
+  --field: #071014;
+  --panel: #102023;
+  --line: #1d343b;
+  --ink: #e8f3f5;
+  --muted: #93aeb4;
+  --faint: #7d98a0;
+  --teal: #4890a0;
+  --mist: #9ed7e2;
+  --deep: #1a6270;
+  --grad: linear-gradient(90deg, #1a6270, #4890a0, #9ed7e2);
+  color-scheme: dark;
+}
 
-@layer base {
-  body {
-    @apply bg-white text-gray-800;
+html {
+  background: var(--field);
+  color: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--field);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--teal);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mist);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+  font-stretch: 118%;
+  font-weight: 700;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shop-section {
+  border-bottom: 1px solid var(--line);
+  padding: 88px 0;
+}
+
+.section-index {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+.ledger-head,
+.ledger-row {
+  display: grid;
+  grid-template-columns: minmax(190px, 250px) minmax(0, 1fr) minmax(132px, 180px);
+  gap: 28px;
+  align-items: start;
+}
+
+.ledger-head {
+  padding: 0 0 12px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.ledger-row {
+  position: relative;
+  padding: 28px 0 28px 16px;
+  border-top: 1px solid var(--line);
+}
+
+.ledger-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.ledger-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--grad);
+  opacity: 0;
+}
+
+.ledger-row:hover {
+  background: linear-gradient(90deg, rgba(72, 144, 160, 0.08), transparent 68%);
+}
+
+.ledger-row:hover::before {
+  opacity: 1;
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+}
+
+.spec-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 860px) {
+  .shop-section {
+    padding: 64px 0;
   }
 
-  h1 {
-    font-size: var(--text-2xl);
-       font-weight: 900;
+  .ledger-head {
+    display: none;
   }
 
-  h2 {
-    font-size: var(--text-xl);
-    font-weight: 700;
+  .ledger-row,
+  .spec-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
-  h3 {
-    font-size: var(--text-lg);
-    font-weight: 600;
+
+  .ledger-row {
+    gap: 14px;
+    padding-left: 14px;
   }
-  h4 {
-    font-size: var(--text-md);
-    font-weight: 500;
+}
+
+.legal-doc h1 {
+  font-family: var(--font-display), sans-serif;
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.legal-doc h2 {
+  font-family: var(--font-display), sans-serif;
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-doc h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-doc p,
+.legal-doc li {
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 68ch;
+  color: var(--muted);
+}
+
+.legal-doc h1,
+.legal-doc h2,
+.legal-doc h3,
+.legal-doc strong {
+  color: var(--ink);
+}
+
+.legal-doc ul,
+.legal-doc ol {
+  margin: 0.75rem 0 0.75rem 1.25rem;
+}
+
+.legal-doc ul {
+  list-style: disc;
+}
+
+.legal-doc ol {
+  list-style: decimal;
+}
+
+.legal-doc li + li {
+  margin-top: 0.5rem;
+}
+
+.legal-doc a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--teal);
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
   }
-  
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

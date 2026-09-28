@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { sendGAEvent } from '@next/third-parties/google';
 import { sendProjectInquiry } from '@/server/sendProjectInquiry';
 
 const NEEDS = ['Custom software', 'A website', 'Not sure yet'] as const;
@@ -71,6 +72,9 @@ export default function ProjectForm() {
       if (result.ok) {
         setStatus('success');
         form.reset();
+        if (process.env.NEXT_PUBLIC_GA_ID && honeypot.length === 0) {
+          sendGAEvent('event', 'project_inquiry');
+        }
         return;
       }
       if ('fieldErrors' in result) {

@@ -11,6 +11,25 @@ const SECTIONS = [
   { id: 'start', label: 'Start a project' },
 ] as const;
 
+function blogLink(size: 'bar' | 'menu', current: boolean, onClick?: () => void) {
+  return (
+    <Link
+      href="/blog"
+      onClick={onClick}
+      aria-current={current ? 'page' : undefined}
+      className={
+        size === 'menu'
+          ? `font-display text-[1.7rem] no-underline ${current ? 'text-[var(--mist)]' : ''}`
+          : `font-mono text-[0.75rem] tracking-[0.16em] uppercase no-underline ${
+              current ? 'text-[var(--mist)]' : 'text-[var(--muted)] hover:text-[var(--ink)]'
+            }`
+      }
+    >
+      Notes
+    </Link>
+  );
+}
+
 const COMPLIANCE = [
   { href: '/sms-signup', label: 'SMS opt-in' },
   { href: '/privacy-policy', label: 'Privacy' },
@@ -182,6 +201,7 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
             {SECTIONS.map((section) => (
               <span key={section.id}>{navLink(section.id, section.label, 'bar')}</span>
             ))}
+            {blogLink('bar', pathname.startsWith('/blog'))}
           </nav>
           <button
             ref={menuButtonRef}
@@ -244,6 +264,7 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
             {SECTIONS.map((section) => (
               <span key={section.id}>{navLink(section.id, section.label, 'menu')}</span>
             ))}
+            {blogLink('menu', pathname.startsWith('/blog'), () => closeMenu(false))}
             {COMPLIANCE.map((item) => (
               <Link
                 key={item.href}

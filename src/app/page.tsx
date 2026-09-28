@@ -1,5 +1,13 @@
+import type { Metadata } from 'next';
 import ProjectForm from '@/components/ProjectForm';
 import Ridge from '@/components/Ridge';
+import { HOME_DESCRIPTION, HOME_TITLE, KEYWORDS, organizationJsonLd } from '@/lib/site';
+
+export const metadata: Metadata = {
+  title: { absolute: HOME_TITLE },
+  description: HOME_DESCRIPTION,
+  keywords: [...KEYWORDS],
+};
 
 type WorkLink = { href: string; label: string };
 
@@ -163,6 +171,10 @@ function Ledger({ rows }: { rows: WorkRow[] }) {
 export default function HomePage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <section className="relative overflow-hidden border-b border-[var(--line)]" aria-label="Introduction">
         <Ridge />
         <div className="relative z-10 mx-auto max-w-[1080px] px-6 pt-[12vh] pb-[16vh]">

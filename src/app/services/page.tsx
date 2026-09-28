@@ -1,11 +1,5 @@
-'use client';
-
-import { useEffect } from 'react';
+import { permanentRedirect } from 'next/navigation';
 
 export default function ServicesPage() {
-  useEffect(() => {
-    window.location.replace('/#capabilities');
-  }, []);
-
-  return null;
+  permanentRedirect('/#capabilities');
 }

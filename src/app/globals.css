@@ -227,6 +227,90 @@ a {
   text-underline-offset: 3px;
 }
 
+.article h2,
+.article h3 {
+  font-family: var(--font-display), sans-serif;
+  font-stretch: 112%;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-top: 2.25rem;
+}
+
+.article h2 {
+  font-size: 1.6rem;
+}
+
+.article h3 {
+  font-size: 1.25rem;
+}
+
+.article p,
+.article li {
+  max-width: 66ch;
+  margin-top: 0.9rem;
+  color: var(--muted);
+}
+
+.article ul,
+.article ol {
+  margin: 0.75rem 0 0.75rem 1.25rem;
+}
+
+.article ul {
+  list-style: disc;
+}
+
+.article ol {
+  list-style: decimal;
+}
+
+.article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--teal);
+  text-underline-offset: 3px;
+}
+
+.article table {
+  width: 100%;
+  margin-top: 1.25rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.article th,
+.article td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem 0.75rem 0.65rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.article th {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.article code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+}
+
+.article pre {
+  margin-top: 1.25rem;
+  overflow-x: auto;
+  background: var(--panel);
+  padding: 1rem;
+}
+
+.article blockquote {
+  margin-top: 1.25rem;
+  border-left: 2px solid var(--teal);
+  padding-left: 1rem;
+  color: var(--ink);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;

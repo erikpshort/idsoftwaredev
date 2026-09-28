@@ -1,0 +1,42 @@
+name: Blog draft
+
+on:
+  schedule:
+    - cron: '17 8 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run. No vendor calls and no pull request.
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate the next due note
+        env:
+          BLOG_ENGINE_URL: https://blog-engine-pi.vercel.app
+          BLOG_ENGINE_TOKEN: ${{ secrets.BLOG_ENGINE_TOKEN }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/blog-generator/generate.mjs
+      - name: Open a review pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Add a shop blog draft.
+          title: Blog draft
+          body: |
+            Review this note before merging. The post, its images, and the queue status are in this branch.
+          add-paths: |
+            content/blog
+            public/blog-images
+            blog-queue.json
+          branch: blog-draft

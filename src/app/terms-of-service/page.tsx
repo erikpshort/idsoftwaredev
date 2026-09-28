@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description: 'The terms for using the Idaho Software Development site and for project text messages.',
+  alternates: { canonical: '/terms-of-service' },
+};
+
 export default function TermsOfServicePage() {
   return (
 

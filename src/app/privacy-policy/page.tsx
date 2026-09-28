@@ -1,3 +1,12 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description:
+    'How Idaho Software Development handles personal information, including phone numbers used for project text messages.',
+  alternates: { canonical: '/privacy-policy' },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="legal-doc px-6 py-16">

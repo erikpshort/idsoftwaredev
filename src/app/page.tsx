@@ -1,14 +1,11 @@
 import ProjectForm from '@/components/ProjectForm';
-
-const labelClass = 'text-[12px] uppercase tracking-[0.16em]';
-
-const linkClass =
-  'underline decoration-[#245E6C] underline-offset-4 hover:text-[#245E6C]';
+import Ridge from '@/components/Ridge';
 
 type WorkLink = { href: string; label: string };
 
 type WorkRow = {
   name: string;
+  tag: string;
   body: string;
   links?: WorkLink[];
 };
@@ -42,12 +39,8 @@ function storeLinks(app: keyof typeof stores): WorkLink[] {
 
 const systems: WorkRow[] = [
   {
-    name: 'GBC Tools',
-    links: [{ href: 'https://www.gbctools.com', label: 'gbctools.com' }],
-    body: 'AI vision on the cameras, counting, a report center, and scheduling for church staff. The link opens the sign-in.',
-  },
-  {
     name: 'Job Workflow Pro',
+    tag: 'Restoration crews',
     links: [
       { href: 'https://www.jobworkflowpro.com', label: 'jobworkflowpro.com' },
       ...storeLinks('jobWorkflowPro'),
@@ -56,11 +49,13 @@ const systems: WorkRow[] = [
   },
   {
     name: 'UmpCrew',
+    tag: 'Umpire crews',
     links: [{ href: 'https://umpcrew.com', label: 'umpcrew.com' }, ...storeLinks('umpcrew')],
     body: 'Scheduling for umpire crews in baseball and softball.',
   },
   {
     name: 'Mold Detector AI',
+    tag: 'From a photo',
     links: [
       { href: 'https://www.molddetectorai.com', label: 'molddetectorai.com' },
       ...storeLinks('moldDetector'),
@@ -69,62 +64,86 @@ const systems: WorkRow[] = [
   },
   {
     name: 'Camp HQ',
+    tag: 'A week of camp',
     links: [{ href: 'https://hq.camp', label: 'hq.camp' }],
     body: 'Check-in, attendance, and the staff tools for a week of camp.',
   },
   {
+    name: 'TenkeyBridge',
+    tag: 'QuickBooks Desktop',
+    links: [{ href: 'https://tenkeybridge.com', label: 'tenkeybridge.com' }],
+    body: 'A Windows program, with a cloud gateway, so QuickBooks Desktop can answer in the shape of QuickBooks Online.',
+  },
+  {
     name: '5min.bible',
+    tag: 'A daily habit',
     links: [{ href: 'https://5min.bible', label: '5min.bible' }, ...storeLinks('fiveMinBible')],
     body: 'A daily Bible habit.',
   },
   {
     name: 'Spiritual Growth Eval',
+    tag: 'Ministry assessments',
     links: [{ href: 'https://www.spiritualgrowtheval.com', label: 'spiritualgrowtheval.com' }],
     body: 'Assessments a ministry uses with its people.',
   },
   {
     name: 'DugoutIQ',
+    tag: 'Pitch tracking',
     body: 'Pitch tracking and game charting for softball and baseball coaches, on iPad.',
   },
   {
-    name: 'TenkeyBridge',
-    links: [{ href: 'https://tenkeybridge.com', label: 'tenkeybridge.com' }],
-    body: 'A Windows program, with a cloud gateway, so QuickBooks Desktop can answer in the shape of QuickBooks Online.',
+    name: 'GBC Tools',
+    tag: 'Church staff',
+    links: [{ href: 'https://www.gbctools.com', label: 'gbctools.com' }],
+    body: 'AI vision on the cameras, counting, a report center, and scheduling for church staff. The link opens the sign-in.',
   },
 ];
 
 const websites: WorkRow[] = [
   {
     name: 'Ridgeline Integrated Systems',
+    tag: 'Cameras, cabling, AV',
     links: [{ href: 'https://ridgelineintegrated.com', label: 'ridgelineintegrated.com' }],
     body: 'The website for a commercial cameras, cabling, and AV company in the Treasure Valley.',
   },
   {
     name: 'High Desert Dairy Lab',
+    tag: 'The lab',
     links: [{ href: 'https://www.hddairylab.com', label: 'hddairylab.com' }],
     body: 'The website for the lab, and the system the lab runs. Customers and staff sign in.',
   },
   {
     name: 'Legacy Feed and Fuel',
+    tag: 'Feed and fuel',
     links: [{ href: 'https://www.legacyfeed.com', label: 'legacyfeed.com' }],
     body: 'The website for the feed and fuel business.',
   },
 ];
 
-function WorkList({ rows }: { rows: WorkRow[] }) {
+function Ledger({ rows }: { rows: WorkRow[] }) {
   return (
     <div>
+      <div className="ledger-head" aria-hidden="true">
+        <span>Name</span>
+        <span>What it is</span>
+        <span>Open</span>
+      </div>
       {rows.map((row) => (
-        <article key={row.name} className="border-t border-[#cfc6b8] py-8">
-          <h3 className="font-news text-[32px] leading-none md:text-[40px]">{row.name}</h3>
-          <p className="mt-3 max-w-[62ch] text-[17px]">{row.body}</p>
-          {row.links && row.links.length > 0 && (
-            <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[15px]">
+        <article key={row.name} className="ledger-row">
+          <div>
+            <h3 className="font-display text-[1.4rem] leading-none tracking-wide">{row.name}</h3>
+            <p className="font-mono mt-2 text-[0.72rem] tracking-[0.14em] text-[var(--faint)] uppercase">
+              {row.tag}
+            </p>
+          </div>
+          <p className="max-w-[56ch] text-[var(--muted)]">{row.body}</p>
+          {row.links && row.links.length > 0 ? (
+            <p className="font-mono flex flex-col gap-1 text-[0.78rem] leading-relaxed tracking-wide">
               {row.links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={linkClass}
+                  className="text-[var(--ink)] underline decoration-[var(--teal)] underline-offset-4"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -132,6 +151,8 @@ function WorkList({ rows }: { rows: WorkRow[] }) {
                 </a>
               ))}
             </p>
+          ) : (
+            <span />
           )}
         </article>
       ))}
@@ -142,86 +163,144 @@ function WorkList({ rows }: { rows: WorkRow[] }) {
 export default function HomePage() {
   return (
     <div>
-      <p className="font-news px-6 pt-8 text-[26px] leading-snug text-[#141614] md:hidden">
-        Custom software for businesses that have outgrown their tools.
-      </p>
-
-      <section id="work" className="scroll-mt-16 bg-[#f3efe6] text-[#141614] md:scroll-mt-0">
-        <div className="px-6 pt-16 md:px-16 md:pt-20">
-          <p className="max-w-[62ch] text-[18px] md:text-[22px] md:leading-relaxed">
+      <section className="relative overflow-hidden border-b border-[var(--line)]" aria-label="Introduction">
+        <Ridge />
+        <div className="relative z-10 mx-auto max-w-[1080px] px-6 pt-[12vh] pb-[16vh]">
+          <p className="font-mono flex flex-wrap items-center gap-x-3 text-[0.72rem] tracking-[0.18em] text-[var(--muted)] uppercase sm:text-[0.75rem] sm:tracking-[0.28em]">
+            <span>Custom software</span>
+            <b className="grad-text font-normal">·</b>
+            <span>Websites</span>
+            <b className="grad-text font-normal">·</b>
+            <span>Mobile apps</span>
+          </p>
+          <h1 className="font-display mt-7 max-w-[14ch] text-[clamp(2.5rem,6.2vw,4.5rem)] leading-[1.04] tracking-tight text-balance">
+            Custom software for businesses that have{' '}
+            <span className="grad-text">outgrown their tools</span>.
+          </h1>
+          <p className="mt-8 max-w-[52ch] text-[1.125rem] text-[var(--muted)]">
             Software the shop has running, sites we have published, and programs people install.
-            Where the work is behind a sign-in, the link is the door. Ask us and we will set up a
-            trial.
+            Where the work is behind a sign-in, the link is the door.
           </p>
-          <h2 className={`${labelClass} mt-14`}>Systems</h2>
-          <div className="mt-4">
-            <WorkList rows={systems} />
+          <div className="mt-11 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <a
+              href="#work"
+              className="font-mono border border-[var(--teal)] px-6 py-3.5 text-[0.78rem] tracking-[0.16em] uppercase no-underline shadow-[0_0_28px_rgba(72,144,160,0.22)]"
+            >
+              See the work
+            </a>
+            <a
+              href="#start"
+              className="font-mono border border-[var(--line)] px-6 py-3.5 text-[0.78rem] tracking-[0.16em] text-[var(--ink)] uppercase no-underline hover:border-[var(--teal)]"
+            >
+              Start a project
+            </a>
           </div>
-          <h2 className={`${labelClass} mt-14`}>Websites</h2>
-          <div className="mt-4">
-            <WorkList rows={websites} />
-          </div>
-        </div>
-
-        <article className="mt-16 px-6 py-16 md:px-16">
-          <p className={labelClass}>Client</p>
-          <h2 className="font-news mt-4 text-[40px] leading-[1.05]">Vander Woude Enterprises</h2>
-          <blockquote className="font-news mt-8 max-w-[36ch] text-[24px] leading-snug">
-            Erik has been an invaluable technology partner. He&apos;s built several custom
-            applications for my businesses, and each time he&apos;s delivered a rock-solid product
-            that fits our unique needs perfectly. He&apos;s great at understanding the business
-            goals behind the software.
-          </blockquote>
-          <p className="mt-6 text-[15px]">Simon Vander Woude, Vander Woude Enterprises</p>
-        </article>
-
-        <article className="bg-[#161816] px-6 py-16 text-[#f3efe6] md:px-16">
-          <p className={labelClass}>Client</p>
-          <h2 className="font-news mt-4 text-[40px] leading-[1.05] text-[#f3efe6]">
-            The GMN Group
-          </h2>
-          <blockquote className="font-news mt-8 max-w-[36ch] text-[24px] leading-snug text-[#4890A0]">
-            We came to Erik with a complex idea for a health and safety application, and he has
-            been crushing it. His attention to detail and commitment to getting things right are
-            exactly what you need for a project this critical. We&apos;re excited to continue our
-            work with him.
-          </blockquote>
-          <p className="mt-6 text-[15px] text-[#f3efe6]">Mike Gugino, The GMN Group</p>
-        </article>
-      </section>
-
-      <section
-        id="capabilities"
-        className="scroll-mt-16 bg-[#f3efe6] px-6 py-20 text-[#141614] md:scroll-mt-0 md:px-16 md:py-28"
-      >
-        <div className="max-w-3xl border-b border-[#cfc6b8] pb-16 md:pb-24">
-          <p className={labelClass}>Custom software</p>
-          <p className="mt-6 max-w-[62ch] text-[18px] md:text-[22px] md:leading-relaxed">
-            Internal tools, customer portals, and other systems a business runs on. SMS when the
-            operation needs it, set up to carrier rules. A project starts as a written scope, ends
-            as a system in use, and includes the shop after launch.
-          </p>
-        </div>
-        <div className="max-w-3xl pt-10 md:pt-12">
-          <p className={labelClass}>Websites</p>
-          <p className="mt-4 max-w-[62ch] text-[17px]">
-            A marketing site for a business that needs to be found and taken seriously. Services
-            sites, portfolios, and online stores. Designed and built, then handed over ready to
-            use.
-          </p>
         </div>
       </section>
 
-      <section
-        id="start"
-        className="scroll-mt-16 bg-[#f3efe6] px-6 py-20 text-[#141614] md:min-h-screen md:scroll-mt-0 md:px-16 md:py-28"
-      >
-        <h2 className="text-[12px] uppercase tracking-[0.16em]">Start a project</h2>
-        <p className="mt-6 max-w-[62ch] text-[18px]">
-          Tell us what the business needs. If you want a trial of something already in use, say
-          which one. We reply at the email you give us.
-        </p>
-        <ProjectForm />
+      <section id="work" className="shop-section scroll-mt-24">
+        <div className="mx-auto max-w-[1080px] px-6">
+          <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 className="font-display text-[clamp(2rem,4.6vw,3.2rem)] leading-none">Running.</h2>
+            <span className="section-index">Systems</span>
+          </div>
+          <p className="mb-12 max-w-[62ch] text-[1.125rem] text-[var(--muted)]">
+            Ask us and we will set up a trial.
+          </p>
+          <Ledger rows={systems} />
+        </div>
+      </section>
+
+      <section className="shop-section" aria-labelledby="sites-heading">
+        <div className="mx-auto max-w-[1080px] px-6">
+          <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 id="sites-heading" className="font-display text-[clamp(2rem,4.6vw,3.2rem)] leading-none">
+              Published.
+            </h2>
+            <span className="section-index">Sites</span>
+          </div>
+          <Ledger rows={websites} />
+        </div>
+      </section>
+
+      <section className="shop-section" aria-label="Clients">
+        <div className="mx-auto max-w-[1080px] px-6">
+          <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 className="font-display text-[clamp(2rem,4.6vw,3.2rem)] leading-none">Clients.</h2>
+            <span className="section-index">In their words</span>
+          </div>
+          <article className="border-t border-[var(--line)] py-10">
+            <h3 className="font-display text-[1.6rem]">Vander Woude Enterprises</h3>
+            <blockquote className="font-display mt-6 max-w-[34ch] text-[clamp(1.45rem,2.4vw,1.85rem)] leading-snug font-medium">
+              Erik has been an invaluable technology partner. He&apos;s built several custom
+              applications for my businesses, and each time he&apos;s delivered a rock-solid product
+              that fits our unique needs perfectly. He&apos;s great at understanding the business
+              goals behind the software.
+            </blockquote>
+            <p className="font-mono mt-6 text-[0.8rem] tracking-wide text-[var(--muted)]">
+              Simon Vander Woude, Vander Woude Enterprises
+            </p>
+          </article>
+          <article className="border-t border-b border-[var(--line)] bg-[var(--panel)] px-6 py-10 md:-mx-6 md:px-6">
+            <h3 className="font-display text-[1.6rem]">The GMN Group</h3>
+            <blockquote className="font-display mt-6 max-w-[34ch] text-[clamp(1.45rem,2.4vw,1.85rem)] leading-snug font-medium text-[var(--mist)]">
+              We came to Erik with a complex idea for a health and safety application, and he has
+              been crushing it. His attention to detail and commitment to getting things right are
+              exactly what you need for a project this critical. We&apos;re excited to continue our
+              work with him.
+            </blockquote>
+            <p className="font-mono mt-6 text-[0.8rem] tracking-wide text-[var(--ink)]">
+              Mike Gugino, The GMN Group
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="capabilities" className="shop-section scroll-mt-24">
+        <div className="mx-auto max-w-[1080px] px-6">
+          <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 className="font-display max-w-[14ch] text-[clamp(2rem,4.6vw,3.2rem)] leading-[1.05]">
+              What the shop builds.
+            </h2>
+            <span className="section-index">Capabilities</span>
+          </div>
+          <div className="spec-row">
+            <h3 className="font-mono pt-1 text-[0.72rem] tracking-[0.24em] text-[var(--muted)] uppercase">
+              Custom software
+            </h3>
+            <p className="max-w-[52ch] text-[1.0625rem]">
+              Internal tools, customer portals, and other systems a business runs on. SMS when the
+              operation needs it, set up to carrier rules. A project starts as a written scope, ends
+              as a system in use, and includes the shop after launch.
+            </p>
+          </div>
+          <div className="spec-row">
+            <h3 className="font-mono pt-1 text-[0.72rem] tracking-[0.24em] text-[var(--muted)] uppercase">
+              Websites
+            </h3>
+            <p className="max-w-[52ch] text-[1.0625rem] text-[var(--muted)]">
+              A marketing site for a business that needs to be found and taken seriously. Services
+              sites, portfolios, and online stores. Designed and built, then handed over ready to
+              use.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="start" className="shop-section scroll-mt-24">
+        <div className="mx-auto max-w-[1080px] px-6">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 className="font-display max-w-[12ch] text-[clamp(2rem,4.6vw,3.2rem)] leading-[1.05]">
+              Start a project.
+            </h2>
+            <span className="section-index">Contact</span>
+          </div>
+          <p className="max-w-[52ch] text-[1.125rem] text-[var(--muted)]">
+            Tell us what the business needs. If you want a trial of something already in use, say
+            which one. We reply at the email you give us.
+          </p>
+          <ProjectForm />
+        </div>
       </section>
     </div>
   );

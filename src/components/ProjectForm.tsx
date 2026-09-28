@@ -24,7 +24,7 @@ function emailHasDomain(email: string) {
 }
 
 const fieldClass =
-  'w-full border border-[#cfc6b8] bg-[#f3efe6] px-3 py-3 text-[17px] text-[#141614]';
+  'w-full border border-[#1d343b] bg-[#102023] px-3 py-3 text-[17px] text-[#e8f3f5] placeholder:text-[#5f7c82]';
 
 export default function ProjectForm() {
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldName, string>>>({});
@@ -90,7 +90,7 @@ export default function ProjectForm() {
     const message = fieldErrors[name];
     if (!message) return null;
     return (
-      <p id={`${name}-error`} className="mt-2 text-[15px] text-[#141614]">
+      <p id={`${name}-error`} className="mt-2 text-[15px] text-[#f0b4b4]">
         {message}
       </p>
     );
@@ -206,7 +206,7 @@ export default function ProjectForm() {
       <button
         type="submit"
         disabled={pending}
-        className="bg-[#245E6C] px-5 py-3 text-[17px] text-white hover:bg-[#1c4c57] active:bg-[#163e48] disabled:opacity-60"
+        className="font-mono border border-[#4890A0] bg-transparent px-6 py-3.5 text-[0.78rem] tracking-[0.14em] text-[#e8f3f5] uppercase hover:border-[#9ed7e2] disabled:opacity-60"
       >
         Send the brief
       </button>

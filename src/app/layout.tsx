@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
-import { Newsreader, Public_Sans } from "next/font/google";
+import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import StudioFrame from "@/components/StudioFrame";
 
-const newsreader = Newsreader({
+const display = Archivo({
   subsets: ["latin"],
-  variable: "--font-newsreader",
-  display: "swap",
+  axes: ["wdth"],
+  variable: "--font-display",
 });
 
-const publicSans = Public_Sans({
+const body = IBM_Plex_Sans({
   subsets: ["latin"],
-  display: "swap",
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -25,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={newsreader.variable}>
-      <body className={publicSans.className}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+      <body>
         <StudioFrame>{children}</StudioFrame>
       </body>
     </html>

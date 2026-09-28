@@ -1,7 +1,7 @@
 export default function TermsOfServicePage() {
   return (
 
-    <div className="legal-doc mx-auto max-w-4xl bg-[#f3efe6] px-6 py-16 text-[#141614]">
+    <div className="legal-doc mx-auto max-w-4xl px-6 py-16">
         <h1>Terms of Service</h1>
         <p className="lead">Last Updated: September 1, 2025</p>
 
@@ -35,7 +35,7 @@ export default function TermsOfServicePage() {
           {" "}
           <a
             href="mailto:support@idsoftwaredev.com"
-            className="font-semibold text-[#141614] underline"
+            className="font-semibold underline"
           >
             support@idsoftwaredev.com
           </a>

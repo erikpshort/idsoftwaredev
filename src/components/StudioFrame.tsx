@@ -36,7 +36,6 @@ function scrollToSection(id: string) {
 export default function StudioFrame({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const year = new Date().getFullYear();
-  const scrollerRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,7 +48,6 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
       return;
     }
 
-    const desktop = window.matchMedia('(min-width: 768px)');
     const ratios = new Map<string, number>();
     let observer: IntersectionObserver | null = null;
 
@@ -63,21 +61,13 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
           bestId = section.id;
         }
       }
-      if (bestId) setActive(bestId);
+      setActive(bestId);
     }
 
-    function observe() {
-      observer?.disconnect();
-      ratios.clear();
-      const scroller = scrollerRef.current;
-      const elements = SECTIONS.map((section) => document.getElementById(section.id)).filter(
-        (element): element is HTMLElement => element !== null,
-      );
-      if (!scroller || elements.length === 0) {
-        setActive(null);
-        return;
-      }
-
+    const elements = SECTIONS.map((section) => document.getElementById(section.id)).filter(
+      (element): element is HTMLElement => element !== null,
+    );
+    if (elements.length > 0) {
       observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
@@ -85,27 +75,17 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
           }
           markVisibleSection();
         },
-        {
-          root: desktop.matches ? scroller : null,
-          threshold: [0, 0.25, 0.5, 0.75, 1],
-        },
+        { threshold: [0, 0.15, 0.35, 0.6, 1] },
       );
-
       elements.forEach((element) => observer?.observe(element));
     }
-
-    observe();
-    desktop.addEventListener('change', observe);
 
     const hash = window.location.hash.replace('#', '');
     if (SECTIONS.some((section) => section.id === hash)) {
       requestAnimationFrame(() => scrollToSection(hash));
     }
 
-    return () => {
-      desktop.removeEventListener('change', observe);
-      observer?.disconnect();
-    };
+    return () => observer?.disconnect();
   }, [pathname]);
 
   useEffect(() => {
@@ -160,7 +140,7 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
     setActive(id);
   }
 
-  const navLink = (id: string, label: string) => {
+  const navLink = (id: string, label: string, size: 'bar' | 'menu') => {
     const current = pathname === '/' && active === id;
     return (
       <Link
@@ -168,9 +148,11 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
         onClick={(event) => onSectionClick(event, id)}
         aria-current={current ? 'true' : undefined}
         className={
-          current
-            ? 'underline decoration-[#141614] decoration-2 underline-offset-4'
-            : 'no-underline'
+          size === 'menu'
+            ? `font-display text-[1.7rem] no-underline ${current ? 'text-[var(--mist)]' : ''}`
+            : `font-mono text-[0.75rem] tracking-[0.16em] uppercase no-underline ${
+                current ? 'text-[var(--mist)]' : 'text-[var(--muted)] hover:text-[var(--ink)]'
+              }`
         }
       >
         {label}
@@ -179,72 +161,63 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="md:h-screen">
-      <aside className="hidden h-screen w-[340px] flex-col bg-[#f3efe6] px-8 py-8 md:fixed md:inset-y-0 md:left-0 md:flex">
-        <Image
-          src="/logo.png"
-          alt="Idaho Software Development"
-          width={326}
-          height={260}
-          className="h-[120px] w-auto"
-        />
-        <p className="font-news mt-8 text-[26px] leading-snug text-[#141614]">
-          Custom software for businesses that have outgrown their tools.
-        </p>
-        <nav className="mt-10 flex flex-col gap-4 text-[17px]" aria-label="Sections">
-          {SECTIONS.map((section) => (
-            <span key={section.id}>{navLink(section.id, section.label)}</span>
-          ))}
-        </nav>
-        <div className="mt-auto space-y-3 pt-10 text-[13px] leading-relaxed">
-          <p>Erik Short, Founder · Treasure Valley</p>
-          <p>
-            <a href="mailto:admin@idsoftwaredev.com" className="underline">
-              admin@idsoftwaredev.com
-            </a>
-          </p>
-          <p className="flex flex-wrap gap-x-3 gap-y-1">
-            {COMPLIANCE.map((item) => (
-              <Link key={item.href} href={item.href} className="underline">
-                {item.label}
-              </Link>
-            ))}
-          </p>
-          <p>© {year} Idaho Software Development</p>
-        </div>
-      </aside>
-
-      <div
-        ref={scrollerRef}
-        className="md:ml-[340px] md:h-screen md:overflow-y-auto"
-      >
-        <header className="sticky top-0 z-20 flex items-center justify-between gap-3 bg-[#f3efe6] px-4 py-3 md:hidden">
+    <div>
+      <header className="sticky top-0 z-20 border-b border-[var(--line)] bg-[var(--field)]/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-[1080px] items-center justify-between gap-4 px-6 py-3">
           <Link href="/" className="flex items-center gap-3 no-underline">
-            <Image
-              src="/logo.png"
-              alt="Idaho Software Development"
-              width={326}
-              height={260}
-              className="h-10 w-auto"
-            />
-            <span className="text-[15px] leading-tight">Idaho Software Development</span>
+            <span className="block h-10 shrink-0 overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt=""
+                width={326}
+                height={260}
+                className="h-14 w-auto max-w-none"
+              />
+            </span>
+            <span className="font-display max-w-[11rem] text-[15px] leading-tight sm:max-w-none sm:text-[17px]">
+              Idaho Software Development
+            </span>
           </Link>
+          <nav className="hidden items-center gap-7 md:flex" aria-label="Sections">
+            {SECTIONS.map((section) => (
+              <span key={section.id}>{navLink(section.id, section.label, 'bar')}</span>
+            ))}
+          </nav>
           <button
             ref={menuButtonRef}
             type="button"
             aria-expanded={menuOpen}
             aria-controls="studio-menu"
-            className="px-3 py-2 text-[15px]"
+            className="font-mono px-3 py-2 text-[0.75rem] tracking-[0.16em] uppercase md:hidden"
             onClick={() => setMenuOpen(true)}
           >
             Menu
           </button>
-        </header>
+        </div>
+      </header>
 
-        {children}
+      {children}
 
-        <p className="px-6 py-10 text-[13px] md:hidden">© {year} Idaho Software Development</p>
-      </div>
+      <footer className="mx-auto flex max-w-[1080px] flex-col gap-4 px-6 py-10 sm:flex-row sm:items-end sm:justify-between">
+        <div className="space-y-2 text-[13px] leading-relaxed text-[var(--muted)]">
+          <p>Erik Short, Founder · Treasure Valley</p>
+          <p>
+            <a href="mailto:admin@idsoftwaredev.com" className="text-[var(--ink)] underline decoration-[var(--teal)] underline-offset-4">
+              admin@idsoftwaredev.com
+            </a>
+          </p>
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            {COMPLIANCE.map((item) => (
+              <Link key={item.href} href={item.href} className="underline decoration-[var(--line)] underline-offset-4">
+                {item.label}
+              </Link>
+            ))}
+          </p>
+        </div>
+        <p className="font-mono text-[0.72rem] tracking-wide text-[var(--faint)]">
+          © {year} Idaho Software Development
+        </p>
+      </footer>
 
       {menuOpen ? (
         <div
@@ -253,25 +226,29 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
           role="dialog"
           aria-modal="true"
           aria-labelledby={menuTitleId}
-          className="fixed inset-0 z-30 flex flex-col bg-[#f3efe6] px-6 py-6 md:hidden"
+          className="fixed inset-0 z-30 flex flex-col bg-[var(--field)] px-6 py-6 md:hidden"
         >
           <div className="flex items-center justify-between">
-            <p id={menuTitleId} className="text-[15px]">
+            <p id={menuTitleId} className="font-display text-[15px]">
               Idaho Software Development
             </p>
-            <button type="button" className="px-3 py-2 text-[15px]" onClick={() => closeMenu(true)}>
+            <button
+              type="button"
+              className="font-mono px-3 py-2 text-[0.75rem] tracking-[0.16em] uppercase"
+              onClick={() => closeMenu(true)}
+            >
               Close
             </button>
           </div>
-          <nav className="mt-10 flex flex-col gap-6 text-[28px]" aria-label="Menu">
+          <nav className="mt-12 flex flex-col gap-6" aria-label="Menu">
             {SECTIONS.map((section) => (
-              <span key={section.id}>{navLink(section.id, section.label)}</span>
+              <span key={section.id}>{navLink(section.id, section.label, 'menu')}</span>
             ))}
             {COMPLIANCE.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="no-underline"
+                className="font-display text-[1.35rem] text-[var(--muted)] no-underline"
                 onClick={() => closeMenu(true)}
               >
                 {item.label}

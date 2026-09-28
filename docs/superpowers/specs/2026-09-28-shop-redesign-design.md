@@ -14,7 +14,7 @@ Two offers. Custom software leads. Websites are a second, shorter offer.
 
 - One marketing page, structured as a front room: a fixed studio panel and a scrolling document. This is the chosen approach ("the practice page"), expressed as a full redesign rather than a restyle of the old scroll.
 - Audience: businesses that need custom software, with a clearly scoped website offer beside it.
-- Proof on the page is the two clients already named: Vander Woude Enterprises and The GMN Group. Their existing quotes stay verbatim. Product names are not invented. Screenshots are added only when a real one is supplied.
+- Proof is shipped work the shop can name, plus the two client quotes. Vander Woude Enterprises and The GMN Group stay verbatim. Other names are real products and sites already on the public web, or DugoutIQ, which has no public URL yet. Screenshots are added only when a real one is supplied. No delivery date.
 - Project inquiries go to `admin@idsoftwaredev.com`. `support@idsoftwaredev.com` stays where it already appears, on the terms page and the SMS page. The privacy page's "contact us" line is not given a new address in this pass.
 - The project form does not collect a phone number.
 - `/sms-signup`, `/privacy-policy`, and `/terms-of-service` are the Twilio A2P 10DLC compliance set. Paths, public access, and the words on those pages stay. See the compliance section.
@@ -64,27 +64,42 @@ Three parts. No separate hero, process diagram, biography, or testimonial grid.
 
 ### Work (`#work`)
 
-Two full-height panels on desktop (`min-height: 100vh`). On mobile they are full width with comfortable padding, not forced to 100vh.
+Paper background. An index, then the two quotes. No full-viewport panels. No stock images, invented screenshots, or icons.
 
-Panel one, paper background `#f3efe6`, ink text `#141614`.
+Intro: "Software the shop has running, sites we have published, and programs people install. Where the work is behind a sign-in, the link is the door. Ask us and we will set up a trial."
 
-- Label: Client
-- Title, Newsreader, about 72px desktop and 40px mobile: Vander Woude Enterprises
-- Line: Custom applications for the operation
-- Body: Several custom applications, each built for the way that business operates.
-- Quote, Newsreader, at least 24px, verbatim: "Erik has been an invaluable technology partner. He's built several custom applications for my businesses, and each time he's delivered a rock-solid product that fits our unique needs perfectly. He's great at understanding the business goals behind the software."
-- Attribution: Simon Vander Woude, Vander Woude Enterprises
+Two groups, each a label and a list. Every row is a Newsreader name, one sentence, and a link where a public URL exists. Links are the real domain, underlined, deep teal `#245E6C`. External links open in a new tab.
 
-Panel two, background `#161816`, text `#f3efe6`. The quote is `#4890A0` and at least 24px so the teal clears large-text contrast on that background. Body copy on this panel stays `#f3efe6`.
+Systems:
 
-- Label: Client
-- Title, same scale: The GMN Group
-- Line: A health and safety application
-- Body: A health and safety application for a complex operational need.
-- Quote, verbatim: "We came to Erik with a complex idea for a health and safety application, and he has been crushing it. His attention to detail and commitment to getting things right are exactly what you need for a project this critical. We're excited to continue our work with him."
-- Attribution: Mike Gugino, The GMN Group
+| Name | Link | Sentence |
+| --- | --- | --- |
+| GBC Tools | https://www.gbctools.com | AI vision on the cameras, counting, a report center, and scheduling for church staff. The link opens the sign-in. |
+| Job Workflow Pro | https://www.jobworkflowpro.com, App Store, Play Store | Jobs, costing, and scheduling for restoration crews, and a mobile app for people in the field. |
+| UmpCrew | https://umpcrew.com, App Store, Play Store | Scheduling for umpire crews in baseball and softball. |
+| Mold Detector AI | https://www.molddetectorai.com | A photo is read for mold, and a qualified lead goes to a restoration company. |
+| Camp HQ | https://hq.camp | Check-in, attendance, and the staff tools for a week of camp. |
+| 5min.bible | https://5min.bible | A daily Bible habit. |
+| Spiritual Growth Eval | https://www.spiritualgrowtheval.com | Assessments a ministry uses with its people. |
+| DugoutIQ | none | Pitch tracking and game charting for softball and baseball coaches, on iPad. |
+| TenkeyBridge | https://tenkeybridge.com | A Windows program, with a cloud gateway, so QuickBooks Desktop can answer in the shape of QuickBooks Online. |
 
-No stock images. No invented screenshots. No icons.
+Job Workflow Pro and UmpCrew each show a live App Store link and a live Play Store link, with no UTM parameters. Mold Detector AI and 5min.bible keep `PENDING_` hrefs in code and do not render those links until the four URLs replace them. See Later.
+
+Websites:
+
+| Name | Link | Sentence |
+| --- | --- | --- |
+| Ridgeline Integrated Systems | https://ridgelineintegrated.com | The website for a commercial cameras, cabling, and AV company in the Treasure Valley. |
+| High Desert Dairy Lab | https://www.hddairylab.com | The website for the lab, and the system the lab runs. Customers and staff sign in. |
+| Legacy Feed and Fuel | https://www.legacyfeed.com | The website for the feed and fuel business. |
+
+Clients, after the index. Quotes stay verbatim and at least 24px. They are not full-viewport.
+
+- Vander Woude Enterprises, paper, ink text. Attribution: Simon Vander Woude, Vander Woude Enterprises. Quote: "Erik has been an invaluable technology partner. He's built several custom applications for my businesses, and each time he's delivered a rock-solid product that fits our unique needs perfectly. He's great at understanding the business goals behind the software."
+- The GMN Group, background `#161816`, text `#f3efe6`. The quote is `#4890A0`. Attribution: Mike Gugino, The GMN Group. Quote: "We came to Erik with a complex idea for a health and safety application, and he has been crushing it. His attention to detail and commitment to getting things right are exactly what you need for a project this critical. We're excited to continue our work with him."
+
+Blog-engine is not a row. It is the generator for a future `/blog` on this site. That pass waits until `blog-engine` has an `idsoftwaredev` config and a `ben_` token. This page does not publish an empty blog.
 
 ### Capabilities (`#capabilities`)
 
@@ -98,7 +113,7 @@ The SMS sentence in Capabilities describes a service the shop delivers for clien
 
 ### Start a project (`#start`)
 
-Paper background. A short intro: "Tell us what the business needs. We reply at the email you give us."
+Paper background. Intro: "Tell us what the business needs. If you want a trial of something already in use, say which one. We reply at the email you give us."
 
 Fields, each with a visible label (placeholders may repeat the hint, but the label is on screen):
 
@@ -211,11 +226,21 @@ The repo has no test runner. Do not add one for this pass. Verify by:
 8. Keyboard: every panel link, compliance link, field, and button shows the focus ring. Buttons and links meet contrast as specified.
 9. `prefers-reduced-motion: reduce` does not animate scroll or hover transforms.
 
+## Later
+
+Store links still to add, when Erik sends the URLs. Do not render a store link while its href contains `PENDING_`.
+
+- Mold Detector AI — App Store
+- Mold Detector AI — Play Store
+- 5min.bible — App Store
+- 5min.bible — Play Store
+
 ## Out of scope
 
 - Wiring `/sms-signup` to Twilio or storing subscribers.
 - Editing privacy, terms, or SMS disclosure copy.
 - Publishing a street address, phone number, prices, or timelines.
-- New project names, screenshots, or additional clients.
-- A team page, a blog, a dark-mode toggle, or a second marketing page.
+- Screenshots, or clients beyond Vander Woude Enterprises and The GMN Group.
+- A team page, a dark-mode toggle, or a second marketing page.
+- `/blog` routes before blog-engine has an idsoftwaredev config and token.
 - Replacing `logo.png`.

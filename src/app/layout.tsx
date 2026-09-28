@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Newsreader, Public_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import StudioFrame from "@/components/StudioFrame";
 
-const inter = Inter({ subsets: ["latin"] });
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
+
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Idaho Software Development",
-  description: "Custom websites and applications for small businesses in Idaho.",
+  description: "Custom software for businesses that have outgrown their tools.",
 };
 
 export default function RootLayout({
@@ -17,11 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+    <html lang="en" className={newsreader.variable}>
+      <body className={publicSans.className}>
+        <StudioFrame>{children}</StudioFrame>
       </body>
     </html>
   );

@@ -1,27 +1,109 @@
 @import "tailwindcss";
 
+:root {
+  --paper: #f3efe6;
+  --ink: #141614;
+  --rule: #cfc6b8;
+  --night: #161816;
+  --paper-text: #f3efe6;
+  --deep-teal: #245e6c;
+}
 
-@layer base {
+html {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.font-news {
+  font-family: var(--font-newsreader), Georgia, serif;
+}
+
+a {
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--deep-teal);
+  outline-offset: 2px;
+}
+
+.legal-doc h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.legal-doc h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-doc h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-doc p,
+.legal-doc li {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.legal-doc ul,
+.legal-doc ol {
+  margin: 0.75rem 0 0.75rem 1.25rem;
+}
+
+.legal-doc ul {
+  list-style: disc;
+}
+
+.legal-doc ol {
+  list-style: decimal;
+}
+
+.legal-doc li + li {
+  margin-top: 0.5rem;
+}
+
+.legal-doc a {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  html,
   body {
-    @apply bg-white text-gray-800;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
   }
 
-  h1 {
-    font-size: var(--text-2xl);
-       font-weight: 900;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-
-  h2 {
-    font-size: var(--text-xl);
-    font-weight: 700;
-  }
-  h3 {
-    font-size: var(--text-lg);
-    font-weight: 600;
-  }
-  h4 {
-    font-size: var(--text-md);
-    font-weight: 500;
-  }
-  
 }

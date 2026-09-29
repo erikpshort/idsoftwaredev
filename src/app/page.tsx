@@ -107,6 +107,30 @@ const systems: WorkRow[] = [
   },
 ];
 
+const capabilities: { label: string; body: string; quiet?: boolean }[] = [
+  {
+    label: 'Custom software',
+    body: 'Internal tools, customer portals, and the systems a crew, a lab, or an office runs every day. SMS when the operation needs it, set up to carrier rules. A project starts as a written scope, ends as a system in use, and includes the shop after launch.',
+  },
+  {
+    label: 'Workflows',
+    body: 'Jobs, costing, and scheduling, from the office out to the person on site. Who is assigned, what the job costs, and what happens next live in one system.',
+  },
+  {
+    label: 'Apps',
+    body: 'iPhone, Android, and iPad apps for people in the field. Public products go on the App Store and Play Store.',
+  },
+  {
+    label: 'AI integration',
+    body: 'A camera that counts, a photo read for a decision, a lead sent to the right company. The model is built into the product.',
+  },
+  {
+    label: 'Websites',
+    body: 'A marketing site for a business that needs to be found and taken seriously. Services sites, portfolios, and online stores. Designed and built, then handed over ready to use.',
+    quiet: true,
+  },
+];
+
 const websites: WorkRow[] = [
   {
     name: 'Ridgeline Integrated Systems',
@@ -181,9 +205,13 @@ export default function HomePage() {
           <p className="font-mono flex flex-wrap items-center gap-x-3 text-[0.72rem] tracking-[0.18em] text-[var(--muted)] uppercase sm:text-[0.75rem] sm:tracking-[0.28em]">
             <span>Custom software</span>
             <b className="grad-text font-normal">·</b>
-            <span>Websites</span>
+            <span>Workflows</span>
             <b className="grad-text font-normal">·</b>
-            <span>Mobile apps</span>
+            <span>Apps</span>
+            <b className="grad-text font-normal">·</b>
+            <span>AI</span>
+            <b className="grad-text font-normal">·</b>
+            <span>Websites</span>
           </p>
           <h1 className="font-display mt-7 max-w-[14ch] text-[clamp(2.5rem,6.2vw,4.5rem)] leading-[1.04] tracking-tight text-balance">
             Custom software for businesses that have{' '}
@@ -276,26 +304,18 @@ export default function HomePage() {
             </h2>
             <span className="section-index">Capabilities</span>
           </div>
-          <div className="spec-row">
-            <h3 className="font-mono pt-1 text-[0.72rem] tracking-[0.24em] text-[var(--muted)] uppercase">
-              Custom software
-            </h3>
-            <p className="max-w-[52ch] text-[1.0625rem]">
-              Internal tools, customer portals, and other systems a business runs on. SMS when the
-              operation needs it, set up to carrier rules. A project starts as a written scope, ends
-              as a system in use, and includes the shop after launch.
-            </p>
-          </div>
-          <div className="spec-row">
-            <h3 className="font-mono pt-1 text-[0.72rem] tracking-[0.24em] text-[var(--muted)] uppercase">
-              Websites
-            </h3>
-            <p className="max-w-[52ch] text-[1.0625rem] text-[var(--muted)]">
-              A marketing site for a business that needs to be found and taken seriously. Services
-              sites, portfolios, and online stores. Designed and built, then handed over ready to
-              use.
-            </p>
-          </div>
+          {capabilities.map((row) => (
+            <div key={row.label} className="spec-row">
+              <h3 className="font-mono pt-1 text-[0.72rem] tracking-[0.24em] text-[var(--muted)] uppercase">
+                {row.label}
+              </h3>
+              <p
+                className={`max-w-[62ch] text-[1.0625rem] ${row.quiet ? 'text-[var(--muted)]' : ''}`}
+              >
+                {row.body}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 

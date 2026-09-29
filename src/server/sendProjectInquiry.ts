@@ -1,8 +1,8 @@
 'use server';
 
 import { Resend } from 'resend';
+import { PROJECT_NEEDS } from '@/lib/projectNeeds';
 
-const NEEDS = ['Custom software', 'A website', 'Not sure yet'] as const;
 const RECIPIENT = 'admin@idsoftwaredev.com';
 
 function emailHasDomain(email: string) {
@@ -34,7 +34,7 @@ export async function sendProjectInquiry(formData: FormData): Promise<
   if (!email) fieldErrors.email = 'Email is required.';
   else if (!emailHasDomain(email)) fieldErrors.email = 'Email needs a domain.';
   if (!company) fieldErrors.company = 'Company is required.';
-  if (!NEEDS.includes(need as (typeof NEEDS)[number])) {
+  if (!PROJECT_NEEDS.includes(need as (typeof PROJECT_NEEDS)[number])) {
     fieldErrors.need = 'What do you need is required.';
   }
   if (!message) fieldErrors.message = 'Message is required.';

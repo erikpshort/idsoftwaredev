@@ -3,7 +3,7 @@ export const SITE_NAME = 'Idaho Software Development';
 
 export const HOME_TITLE = 'Custom Software in Idaho | Idaho Software Development';
 export const HOME_DESCRIPTION =
-  'Custom software, websites, and mobile apps for Treasure Valley businesses that have outgrown their tools.';
+  'Custom software, workflows, apps, and AI integration for Treasure Valley businesses that have outgrown their tools.';
 
 /** Search phrases the shop should be found for. Used in titles, descriptions, and the blog queue. */
 export const KEYWORDS = [
@@ -30,7 +30,9 @@ export const organizationJsonLd = {
   },
   knowsAbout: [
     'Custom software',
-    'Business websites',
+    'Workflow software',
     'Mobile apps',
+    'AI integration',
+    'Business websites',
   ],
 };

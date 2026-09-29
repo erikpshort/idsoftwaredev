@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import { sendGAEvent } from '@next/third-parties/google';
+import { PROJECT_NEEDS } from '@/lib/projectNeeds';
 import { sendProjectInquiry } from '@/server/sendProjectInquiry';
-
-const NEEDS = ['Custom software', 'A website', 'Not sure yet'] as const;
 
 type FieldName = 'name' | 'email' | 'company' | 'need' | 'message';
 
@@ -45,7 +44,7 @@ export default function ProjectForm() {
     if (!email) errors.email = `${FIELD_LABELS.email} is required.`;
     else if (!emailHasDomain(email)) errors.email = `${FIELD_LABELS.email} needs a domain.`;
     if (!company) errors.company = `${FIELD_LABELS.company} is required.`;
-    if (!NEEDS.includes(need as (typeof NEEDS)[number])) {
+    if (!PROJECT_NEEDS.includes(need as (typeof PROJECT_NEEDS)[number])) {
       errors.need = `${FIELD_LABELS.need} is required.`;
     }
     if (!message) errors.message = `${FIELD_LABELS.message} is required.`;
@@ -181,7 +180,7 @@ export default function ProjectForm() {
           <option value="" disabled>
             What do you need
           </option>
-          {NEEDS.map((option) => (
+          {PROJECT_NEEDS.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>

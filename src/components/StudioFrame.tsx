@@ -220,7 +220,12 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
 
       <footer className="mx-auto flex max-w-[1080px] flex-col gap-4 px-6 py-10 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-2 text-[13px] leading-relaxed text-[var(--muted)]">
-          <p>Erik Short, Founder · Treasure Valley</p>
+          <p>
+            <Link href="/authors/erik-short" className="underline decoration-[var(--line)] underline-offset-4">
+              Erik Short
+            </Link>
+            , Founder · Treasure Valley
+          </p>
           <p>
             <a href="mailto:admin@idsoftwaredev.com" className="text-[var(--ink)] underline decoration-[var(--teal)] underline-offset-4">
               admin@idsoftwaredev.com

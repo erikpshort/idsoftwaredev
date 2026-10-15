@@ -15,6 +15,24 @@ export const KEYWORDS = [
   'Idaho web development',
 ] as const;
 
+export const AUTHOR = {
+  name: 'Erik Short',
+  slug: 'erik-short',
+  jobTitle: 'Founder',
+  path: '/authors/erik-short',
+  image: '/erik-short.jpg',
+} as const;
+
+export const authorJsonLd = {
+  '@type': 'Person',
+  '@id': `${SITE_URL}${AUTHOR.path}#person`,
+  name: AUTHOR.name,
+  url: `${SITE_URL}${AUTHOR.path}`,
+  image: `${SITE_URL}${AUTHOR.image}`,
+  jobTitle: AUTHOR.jobTitle,
+  worksFor: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+};
+
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
@@ -26,7 +44,9 @@ export const organizationJsonLd = {
   areaServed: 'Treasure Valley, Idaho',
   founder: {
     '@type': 'Person',
-    name: 'Erik Short',
+    '@id': authorJsonLd['@id'],
+    name: AUTHOR.name,
+    url: authorJsonLd.url,
   },
   knowsAbout: [
     'Custom software',

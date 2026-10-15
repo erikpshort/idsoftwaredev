@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPost, getPosts, hasHero, hasSocial, renderMarkdown } from '@/lib/blog';
-import { SITE_NAME, SITE_URL } from '@/lib/site';
+import { AUTHOR, SITE_NAME, SITE_URL, authorJsonLd } from '@/lib/site';
 
 type Params = { slug: string };
 
@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
     headline: post.title,
     description: post.description,
     datePublished: post.publishDate,
-    author: { '@type': 'Person', name: post.author },
+    author: post.author === AUTHOR.name ? authorJsonLd : { '@type': 'Person', name: post.author },
     publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     mainEntityOfPage: canonical,
     image: hasSocial(post.slug) ? `${SITE_URL}/blog-images/${post.slug}/social.jpg` : undefined,
@@ -101,7 +101,13 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
         {post.title}
       </h1>
       <p className="font-mono mt-4 text-[0.75rem] tracking-wide text-[var(--faint)]">
-        {post.author}
+        {post.author === AUTHOR.name ? (
+          <Link href={AUTHOR.path} rel="author" className="underline decoration-[var(--line)] underline-offset-4">
+            {post.author}
+          </Link>
+        ) : (
+          post.author
+        )}
         {' · '}
         {new Date(post.publishDate).toLocaleDateString('en-US', {
           timeZone: 'America/Boise',

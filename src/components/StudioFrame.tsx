@@ -187,7 +187,7 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
             <span className="block h-10 shrink-0 overflow-hidden">
               <Image
                 src="/logo.png"
-                alt=""
+                alt="Idaho Software Development logo"
                 width={326}
                 height={260}
                 className="h-14 w-auto max-w-none"

@@ -72,7 +72,7 @@ export default function ProjectForm() {
         setStatus('success');
         form.reset();
         if (process.env.NEXT_PUBLIC_GA_ID && honeypot.length === 0) {
-          sendGAEvent('event', 'project_inquiry');
+          sendGAEvent('event', 'generate_lead', { form_name: 'project_inquiry' });
         }
         return;
       }

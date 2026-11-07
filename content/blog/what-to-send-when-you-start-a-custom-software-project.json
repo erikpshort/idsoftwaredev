@@ -1,0 +1,61 @@
+{
+  "title": "What to Send When You Start a Custom Software Project",
+  "slug": "what-to-send-when-you-start-a-custom-software-project",
+  "description": "Thinking about custom software for your Idaho business? Here's exactly what to put in that first note, so the conversation actually goes somewhere.",
+  "author": "Erik Short",
+  "publishDate": "2026-10-28T08:00:00-06:00",
+  "tags": [
+    "custom software project",
+    "hire a software shop Idaho",
+    "Boise custom software"
+  ],
+  "markdown": "## Quick answers\n\n- **What should a business include in a custom software inquiry?** A plain description of what the business does, where the current tools (spreadsheets, email, paper) are breaking down, and who would actually use the new system day to day.\n- **Does a project have to start with a finished specification?** No. A specification comes out of the early conversation; you don't need one to reach out.\n- **Do I need to know what kind of software I want before I contact a shop?** No. Naming the problem is enough — the shop's job is to help figure out the right tool for it.\n- **Is a custom system different from a website?** Yes. A website is marketing. Custom software is the internal tool or portal a business runs on.\n- **Where do inquiries go?** Through the form at [idsoftwaredev.com/#start](/#start), or directly to admin@idsoftwaredev.com.\n\n## The note doesn't need to be polished\n\nMost people put off reaching out about custom software because they think they're supposed to show up with a spec document, a feature list, and maybe a wireframe or two. They're not. That stuff gets built during the project, not before it.\n\nWhat actually moves a first conversation forward is much simpler, and it's stuff you already know cold: what your business does, where things are breaking down right now, and who'd be using whatever gets built. That's it. You don't need software vocabulary. You need to describe your own operation accurately, which you can already do better than anyone.\n\n## Tell the shop what the business does\n\nThis sounds obvious, but it matters more than people expect. A shop that builds software for a living sees a lot of different operations — dispatch, inspections, intake, scheduling, billing, field crews reporting back to an office. The faster you can describe your actual business in plain terms, the faster a developer can start picturing where software fits and where it doesn't.\n\nDon't describe the software you think you want yet. Describe the work:\n\n- What does the business sell or deliver?\n- Who are the people doing the work — office staff, field crews, drivers, inspectors, umpires, dairy lab techs, whoever it is?\n- What has to happen, in what order, for a job to get from \"started\" to \"done\"?\n\nIf you can walk through a single transaction or job from start to finish — a work order, a customer signup, a scheduling request — that's often more useful than any list of features.\n\n## Say exactly where the current tools fail\n\nThis is the part that actually tells a shop what to build. Not \"we need a new system,\" but something closer to: \"We track jobs in a shared spreadsheet, and twice a month someone overwrites someone else's row and we lose a day's work finding it.\" Or: \"Customers email us for quotes and half the time the email gets buried and we just lose the job.\"\n\nSpecific failure points are gold. They tell a developer:\n\n- What data actually matters to your business (the stuff people are fighting to protect in that spreadsheet)\n- Where the real cost is — lost time, lost jobs, duplicate entry, confused customers\n- What's actually urgent versus what's just annoying\n\nIf your business has quietly outgrown the spreadsheets and email chains that used to be enough, you're not alone, and it's worth reading [when a Treasure Valley business has outgrown its spreadsheets](/blog/when-a-treasure-valley-business-has-outgrown-its-spreadsheets) for a longer look at what that moment usually looks like from the inside. The short version: once you're maintaining workarounds for your workarounds, it's time for something built for the job.\n\nYou don't have to diagnose the fix. You just have to describe the symptom honestly. \"This breaks\" is more useful to a software shop than \"I think I need a database.\"\n\n## Say who will actually use it\n\nSoftware gets built for the people who'll sit in front of it every day, not for the owner describing it. So the first note should say who those people are:\n\n- Office staff entering data\n- Field crews or drivers reporting from a phone\n- Customers checking status or booking something themselves\n- Managers who just need a dashboard, not data entry\n\nThis matters for a few reasons. It shapes whether the system needs to work well on a phone in a truck versus a desktop in an office. It shapes how much training time is realistic. And it shapes whether the business needs something like text message notifications — a lot of field-based operations do, because nobody's checking email from a job site, but it has to be set up correctly against carrier rules, not bolted on as an afterthought.\n\nIf customers need visibility into their own job or order — a portal where they check status, see invoices, or schedule something — say that too. That's a different kind of access than an internal tool, and it changes the shape of the system from day one.\n\n## What this isn't\n\nA first note to a software shop is not a contract, a commitment, or a spec. It's a conversation starter. You're not going to get it wrong by under-describing it, and you're not expected to have already solved the problem — that's the whole reason you're reaching out.\n\nIt's also worth being clear about what you're asking for in the first place. Custom software and a marketing website are different offers, built for different reasons. A website gets your business found and taken seriously online — a services site, a portfolio, an online store. Custom software is the system the business runs on internally, or the portal customers use to interact with it. If what you actually need is a better web presence, that's a shorter, more contained project than an internal system, and it helps to know which one you're asking about before the first call.\n\n## What happens after the first note\n\nOnce a shop has those three things — what the business does, where it's breaking, who uses the system — the next step is usually a conversation, not a proposal. Questions come back. Edge cases get surfaced. The actual shape of the system gets worked out together, because the owner knows the business and the shop knows what's buildable. A written scope comes out of that conversation. It's not something you're expected to arrive with.\n\nAt Idaho Software Development, that's how projects start: a plain description from the business owner, a back-and-forth to pin down what's really needed, and a scope that both sides agree on before any code gets written. You can see the kind of systems that approach has produced — things like job tracking tools, customer portals, and scheduling systems — on the [work and capabilities page](/#capabilities).\n\n## Frequently asked questions\n\n### What should a business include in a custom software inquiry?\nA plain-language description of what the business does, specifics about where current tools (spreadsheets, email, paper, whiteboards) are failing, and a clear picture of who will use the system — office staff, field crews, customers, or some mix.\n\n### Does a project have to start with a finished specification?\nNo. A specification is something a shop helps you build out of the early conversation. Showing up with a feature list is fine, but showing up with an honest description of your problem is just as useful, and often more accurate.\n\n### How is custom software different from hiring someone to build a website?\nA website is built to get a business found and taken seriously by people outside it — customers, prospects, search engines. Custom software is the internal system or customer portal a business runs its day-to-day operations on. They're different projects with different goals.\n\n### Do I need to know exactly what features I want?\nNo. Most owners don't, and that's normal. What helps more is describing the problem clearly — what's slow, what's error-prone, what's getting lost — and letting the shop help figure out what to build.\n\n### What if my business is pretty small — is custom software overkill?\nNot necessarily. The real question isn't size, it's whether spreadsheets and email have started costing you real time or real mistakes. Plenty of small operations reach that point well before they'd expect to.\n\nIf spreadsheets and email have stopped keeping up with how your business actually runs, [start the conversation](https://www.idsoftwaredev.com/#start).",
+  "quickAnswer": "- **What should a business include in a custom software inquiry?** A plain description of what the business does, where the current tools (spreadsheets, email, paper) are breaking down, and who would actually use the new system day to day.\n- **Does a project have to start with a finished specification?** No. A specification comes out of the early conversation; you don't need one to reach out.\n- **Do I need to know what kind of software I want before I contact a shop?** No. Naming the problem is enough — the shop's job is to help figure out the right tool for it.\n- **Is a custom system different from a website?** Yes. A website is marketing. Custom software is the internal tool or portal a business runs on.\n- **Where do inquiries go?** Through the form at [idsoftwaredev.com/#start](/#start), or directly to admin@idsoftwaredev.com.",
+  "faqJsonLd": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What should a business include in a custom software inquiry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A plain-language description of what the business does, specifics about where current tools (spreadsheets, email, paper, whiteboards) are failing, and a clear picture of who will use the system — office staff, field crews, customers, or some mix."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a project have to start with a finished specification?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A specification is something a shop helps you build out of the early conversation. Showing up with a feature list is fine, but showing up with an honest description of your problem is just as useful, and often more accurate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is custom software different from hiring someone to build a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A website is built to get a business found and taken seriously by people outside it — customers, prospects, search engines. Custom software is the internal system or customer portal a business runs its day-to-day operations on. They're different projects with different goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to know exactly what features I want?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Most owners don't, and that's normal. What helps more is describing the problem clearly — what's slow, what's error-prone, what's getting lost — and letting the shop help figure out what to build."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if my business is pretty small — is custom software overkill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not necessarily. The real question isn't size, it's whether spreadsheets and email have started costing you real time or real mistakes. Plenty of small operations reach that point well before they'd expect to. If spreadsheets and email have stopped keeping up with how your business actually runs, start the conversation."
+        }
+      }
+    ]
+  },
+  "imageAlt": "Business owner at a desk reviewing a marked-up spreadsheet printout next to an open laptop"
+}

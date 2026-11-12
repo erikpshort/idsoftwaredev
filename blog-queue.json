@@ -30,7 +30,8 @@
       "Does a project have to start with a finished specification?"
     ],
     "publishOn": "2026-10-28",
-    "status": "queued"
+    "status": "done",
+    "slug": "what-to-send-when-you-start-a-custom-software-project"
   },
   {
     "topic": "When a website is the job, and when it is not",

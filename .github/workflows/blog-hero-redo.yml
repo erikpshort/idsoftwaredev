@@ -1,0 +1,55 @@
+name: Blog hero redo
+
+# Re-renders the images for one published post and opens a pull request.
+# The post text is not changed. Run it by hand.
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Slug of the post to re-render.
+        required: true
+      hero_scene:
+        description: One sentence naming the object to draw. No style words.
+        required: true
+      hero_headline:
+        description: Headline on the image, as "Main line|smaller second line".
+        required: true
+      dry_run:
+        description: Dry run. Placeholder images, no charge, no pull request.
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  redo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Render the images
+        env:
+          BLOG_ENGINE_URL: https://blog-engine-pi.vercel.app
+          BLOG_ENGINE_TOKEN: ${{ secrets.BLOG_ENGINE_TOKEN }}
+          POST_SLUG: ${{ inputs.slug }}
+          HERO_SCENE: ${{ inputs.hero_scene }}
+          HERO_HEADLINE: ${{ inputs.hero_headline }}
+          DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/blog-generator/redo-hero.mjs
+      - name: Open a review pull request
+        if: ${{ !inputs.dry_run }}
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Redo a blog post's images.
+          title: 'Blog images: ${{ inputs.slug }}'
+          body: |
+            New hero and social images for this post. The post text is unchanged.
+          add-paths: |
+            public/blog-images
+          branch: blog-hero-${{ inputs.slug }}
+          delete-branch: true

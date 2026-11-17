@@ -117,3 +117,9 @@ item.status = 'done';
 item.slug = post.slug;
 fs.writeFileSync(queuePath, JSON.stringify(queue, null, 2) + '\n');
 console.log(`Wrote ${post.slug}`);
+
+// Tell the workflow a draft exists so it can stash it and send the review email.
+if (process.env.GITHUB_OUTPUT) {
+  const title = String(post.title).replace(/[\r\n]+/g, ' ');
+  fs.appendFileSync(process.env.GITHUB_OUTPUT, `generated=true\nslug=${post.slug}\ntitle=${title}\n`);
+}

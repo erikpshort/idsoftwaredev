@@ -22,13 +22,41 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # A draft that is not merged yet leaves the queue on main unchanged, so
+      # without this check every daily run would pay to generate it again.
+      - name: Stop if a draft is already waiting
+        id: pending
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tip=$(git ls-remote --heads origin blog-draft | cut -f1)
+          if [ -z "$tip" ]; then exit 0; fi
+          state=$(gh pr list --repo "$GITHUB_REPOSITORY" --head blog-draft --state all \
+            --json headRefOid,state --jq "[.[] | select(.headRefOid == \"$tip\")][0].state // \"NONE\"")
+          if [ "$state" = "OPEN" ]; then
+            echo "A blog draft is already open for review. Nothing to generate."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          elif [ "$state" = "NONE" ]; then
+            echo "::error::The blog-draft branch has a draft with no pull request. Open one or delete the branch."
+            exit 1
+          fi
       - name: Generate the next due note
+        id: gen
+        if: steps.pending.outputs.skip != 'true'
         env:
           BLOG_ENGINE_URL: https://blog-engine-pi.vercel.app
           BLOG_ENGINE_TOKEN: ${{ secrets.BLOG_ENGINE_TOKEN }}
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
         run: node scripts/blog-generator/generate.mjs
+      # The pull request step resets the working tree, so keep a copy for the email.
+      - name: Keep a copy of the draft for the email
+        if: steps.gen.outputs.generated == 'true'
+        env:
+          POST_SLUG: ${{ steps.gen.outputs.slug }}
+        run: cp "content/blog/$POST_SLUG.json" "$RUNNER_TEMP/blog-draft.json"
       - name: Open a review pull request
+        id: cpr
+        if: steps.pending.outputs.skip != 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: Add a shop blog draft.
@@ -40,3 +68,14 @@ jobs:
             public/blog-images
             blog-queue.json
           branch: blog-draft
+      # Needs the repo secrets RESEND_API_KEY and CONTACT_FROM. Without them the
+      # step logs a notice and passes, and the pull request is still open.
+      - name: Email the draft for review
+        if: steps.gen.outputs.generated == 'true'
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.CONTACT_FROM }}
+          EMAIL_TO: erikpshort@gmail.com
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+          DRAFT_FILE: ${{ runner.temp }}/blog-draft.json
+        run: node scripts/blog-generator/notify-email.mjs

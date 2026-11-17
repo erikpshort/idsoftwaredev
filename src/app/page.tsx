@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import ProjectForm from '@/components/ProjectForm';
 import Ridge from '@/components/Ridge';
+import { getPosts } from '@/lib/blog';
 import { HOME_DESCRIPTION, HOME_TITLE, KEYWORDS, organizationJsonLd } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -193,6 +195,8 @@ function Ledger({ rows }: { rows: WorkRow[] }) {
 }
 
 export default function HomePage() {
+  const latestPosts = getPosts().slice(0, 3);
+
   return (
     <div>
       <script
@@ -318,6 +322,44 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {latestPosts.length > 0 ? (
+        <section className="shop-section" aria-labelledby="blog-heading">
+          <div className="mx-auto max-w-[1080px] px-6">
+            <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+              <h2 id="blog-heading" className="font-display text-[clamp(2rem,4.6vw,3.2rem)] leading-none">
+                Written.
+              </h2>
+              <span className="section-index">Blog</span>
+            </div>
+            {latestPosts.map((post) => (
+              <article key={post.slug} className="spec-row">
+                <p className="font-mono pt-1 text-[0.72rem] tracking-[0.14em] text-[var(--faint)] uppercase">
+                  {new Date(post.publishDate).toLocaleDateString('en-US', {
+                    timeZone: 'America/Boise',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+                <div>
+                  <h3 className="font-display text-[1.4rem] leading-tight">
+                    <Link href={`/blog/${post.slug}`} className="no-underline hover:text-[var(--mist)]">
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 max-w-[62ch] text-[var(--muted)]">{post.description}</p>
+                </div>
+              </article>
+            ))}
+            <p className="font-mono mt-10 text-[0.78rem] tracking-[0.16em] uppercase">
+              <Link href="/blog" className="underline decoration-[var(--teal)] underline-offset-4">
+                All posts
+              </Link>
+            </p>
+          </div>
+        </section>
+      ) : null}
 
       <section id="start" className="shop-section scroll-mt-24">
         <div className="mx-auto max-w-[1080px] px-6">

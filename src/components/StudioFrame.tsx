@@ -25,7 +25,7 @@ function blogLink(size: 'bar' | 'menu', current: boolean, onClick?: () => void) 
             }`
       }
     >
-      Notes
+      Blog
     </Link>
   );
 }
@@ -232,6 +232,9 @@ export default function StudioFrame({ children }: { children: React.ReactNode })
             </a>
           </p>
           <p className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link href="/blog" className="underline decoration-[var(--line)] underline-offset-4">
+              Blog
+            </Link>
             {COMPLIANCE.map((item) => (
               <Link key={item.href} href={item.href} className="underline decoration-[var(--line)] underline-offset-4">
                 {item.label}

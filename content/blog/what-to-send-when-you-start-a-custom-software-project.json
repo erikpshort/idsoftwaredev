@@ -1,0 +1,61 @@
+{
+  "title": "What to Send When You Start a Custom Software Project",
+  "slug": "what-to-send-when-you-start-a-custom-software-project",
+  "description": "Thinking about custom software for your Idaho business? Here's exactly what to put in that first note, and why you don't need a finished spec.",
+  "author": "Erik Short",
+  "publishDate": "2026-10-28T08:00:00-06:00",
+  "tags": [
+    "custom software project",
+    "hire a software shop Idaho",
+    "Boise custom software"
+  ],
+  "markdown": "## Quick answers\n\n**What should a business include in a custom software inquiry?** A plain description of what the business does, where the current tools break down, and who would actually use the new system day to day.\n**Does a project have to start with a finished specification?** No. A written scope gets built from the conversation; you don't need to arrive with a spec, diagrams, or technical language.\n**Do I need to know what I want the software to look like?** No. Knowing where the pain is matters more than knowing the solution.\n**Should I send pricing or deadline expectations in the first note?** Not necessary. That conversation comes after the shop understands the problem.\n**What if I only have a vague sense something's wrong?** That's a fine place to start. \"Our spreadsheet is a mess\" is a real starting point, not a weak one.\n\n## The first note matters more than people think\n\nMost people who reach out about custom software have never done it before. They're not sure what's useful to say, so they either write three sentences (\"we need a system for our shop\") or they write three pages trying to describe a solution they're not sure is right. Both are workable. But there's a version of that first note that saves everyone time, and it's not complicated.\n\nIt comes down to three things: what the business does, where the current tools are failing, and who's going to use the system once it exists.\n\n### What the business does\n\nNot a mission statement. Just the operational reality. If you run a dairy testing lab, a dirt-bike repair shop, a nonprofit that places foster kids, or a crew of professional umpires, say that plainly and say how the work actually flows. Who takes in a job, who touches it next, what has to happen before it's considered done.\n\nThis matters because custom software isn't a generic product with your logo on it. It's built around how your business actually operates. A shop that writes software for a lot of different industries can't guess your workflow from your job title. The faster the shop understands the shape of your operation, the faster the real conversation starts.\n\n### Where the current tools fail\n\nThis is the most useful section of any first note, and also the part people skip because they feel like they should already have a solution in mind. You don't need one. You need to describe the failure.\n\nSome examples of what \"the tools are failing\" actually sounds like:\n\n- \"We track jobs in a spreadsheet, but three people edit it and it's always out of sync.\"\n- \"Customers call to ask about order status because they have no way to check it themselves.\"\n- \"We re-type the same information into two different systems every day.\"\n- \"Nobody trusts the numbers in the report because everyone has their own version of the file.\"\n- \"We lose track of who still owes us money because invoices live in email.\"\n\nNone of that requires technical knowledge to describe. It requires knowing your own business, which you already do. If this sounds like where you're at, the longer piece on [when a Treasure Valley business has outgrown its spreadsheets](/blog/when-a-treasure-valley-business-has-outgrown-its-spreadsheets) walks through the signs in more detail — it might put words to something you've been feeling but haven't said out loud yet.\n\n### Who will use it\n\nA system has to work for the people actually sitting in front of it, not just for the owner who requested it. So say who the users are. Office staff who've been doing this for years and don't want to relearn everything? Field crews on a phone with spotty signal? Customers who need a portal so they stop calling the office? Each of those changes what the system needs to be.\n\nIt also helps to say how comfortable those users are with technology. A system built for a team that lives in spreadsheets all day looks different from one built for a crew that mostly uses a phone. Neither is harder to build. But knowing it up front means fewer surprises later.\n\n## What you don't need to send\n\nYou don't need a requirements document. You don't need wireframes or mockups. You don't need to know whether it should be a web app or a mobile app or have an API. You don't need pricing expectations or a deadline. None of that is the reader's job at this stage — it's the shop's job to take what you know about your business and turn it into something buildable.\n\nIf you've got opinions on any of that, that's fine too. Some owners already know they want field staff to use their phones, or that a certain report has to exist from day one. Include it if you have it. Just don't feel like you're not ready to reach out until you've figured all of it out. You're not supposed to have figured it out. That's what the scope-writing conversation is for.\n\n## What happens after the first note\n\nAt [Idaho Software Development](/), a project starts as a written scope — a document both sides agree on before anything gets built. That scope comes out of a conversation, not out of guesswork on either end. The first note doesn't need to contain the scope. It needs to contain enough for that conversation to start somewhere real instead of somewhere generic.\n\nClients who've gone through it describe it in their own words. Simon Vander Woude of Vander Woude Enterprises said: \"Working with Erik has been an outstanding experience from start to finish.\" Mike Gugino of The GMN Group said: \"Erik's expertise and professionalism exceeded our expectations.\" Neither of them showed up with a spec. They showed up with a business and a problem.\n\n## A note on websites versus custom software\n\nIf what you actually need is a marketing site — something that gets your business found and taken seriously online — that's a different, smaller offer, and the same logic about a first note doesn't really apply the same way. A website project usually starts with what you want the site to say about the business and who's supposed to land on it. Custom software is about running the operation itself: internal tools, portals, systems the business depends on daily. If you're not sure which one you need, say what's bothering you and let that sort itself out in conversation.\n\n## Frequently asked questions\n\n### What should a business include in a custom software inquiry?\nDescribe what the business does day to day, where the current process breaks down or wastes time, and who would use the new system once it's built. Specifics about a real failure — a spreadsheet three people edit, a report nobody trusts — are more useful than a polished pitch.\n\n### Does a project have to start with a finished specification?\nNo. The scope is written as part of the engagement, built from a conversation about the business. Showing up without a spec is normal and expected.\n\n### How technical does my first note need to be?\nNot technical at all. Plain language about the business and the problem is exactly what's useful. Technical decisions are the shop's job, not yours.\n\n### What if I'm not sure custom software is even the right move?\nSay what's going on and let that be the question. A spreadsheet that's grown unmanageable, a customer-facing process that generates too many phone calls, a report nobody trusts — all of those are reasons to have the conversation, whether or not custom software ends up being the answer.\n\n### Is this different for a small business versus a bigger operation?\nThe content of the first note isn't really different. A five-person shop and a fifty-person operation both just need to describe what they do, where it hurts, and who's using the system. Scale affects the build, not what you should say up front.\n\nIf any of this sounds like your business, [start the conversation](/#start) and describe what's actually going on. That's all it takes to begin.\n",
+  "quickAnswer": "**What should a business include in a custom software inquiry?** A plain description of what the business does, where the current tools break down, and who would actually use the new system day to day.\n**Does a project have to start with a finished specification?** No. A written scope gets built from the conversation; you don't need to arrive with a spec, diagrams, or technical language.\n**Do I need to know what I want the software to look like?** No. Knowing where the pain is matters more than knowing the solution.\n**Should I send pricing or deadline expectations in the first note?** Not necessary. That conversation comes after the shop understands the problem.\n**What if I only have a vague sense something's wrong?** That's a fine place to start. \"Our spreadsheet is a mess\" is a real starting point, not a weak one.",
+  "faqJsonLd": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What should a business include in a custom software inquiry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Describe what the business does day to day, where the current process breaks down or wastes time, and who would use the new system once it's built. Specifics about a real failure — a spreadsheet three people edit, a report nobody trusts — are more useful than a polished pitch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a project have to start with a finished specification?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The scope is written as part of the engagement, built from a conversation about the business. Showing up without a spec is normal and expected."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How technical does my first note need to be?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not technical at all. Plain language about the business and the problem is exactly what's useful. Technical decisions are the shop's job, not yours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I'm not sure custom software is even the right move?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Say what's going on and let that be the question. A spreadsheet that's grown unmanageable, a customer-facing process that generates too many phone calls, a report nobody trusts — all of those are reasons to have the conversation, whether or not custom software ends up being the answer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this different for a small business versus a bigger operation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The content of the first note isn't really different. A five-person shop and a fifty-person operation both just need to describe what they do, where it hurts, and who's using the system. Scale affects the build, not what you should say up front. If any of this sounds like your business, start the conversation and describe what's actually going on. That's all it takes to begin."
+        }
+      }
+    ]
+  },
+  "imageAlt": "A business owner typing an email at a cluttered desk with paperwork and a spreadsheet nearby"
+}

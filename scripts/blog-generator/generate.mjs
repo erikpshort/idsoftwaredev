@@ -58,6 +58,11 @@ const response = await fetch(`${baseUrl}/api/generate`, {
     questions: item.questions,
     links,
     publishOn: item.publishOn,
+    // Optional art direction from the queue. heroScene is one sentence naming
+    // the object to draw, with no style words; the engine adds the style.
+    // heroHeadline is "Main line|smaller second line".
+    ...(item.heroScene ? { heroScene: item.heroScene } : {}),
+    ...(item.heroHeadline ? { heroHeadline: item.heroHeadline } : {}),
     dryRun,
   }),
   signal: AbortSignal.timeout(900_000),
